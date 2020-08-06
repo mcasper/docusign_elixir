@@ -62,7 +62,7 @@ defmodule DocuSign.OAuth do
     [
       strategy: __MODULE__,
       client_id: Application.fetch_env!(:docusign, :client_id),
-      site: "https://#{Application.fetch_env!(:docusign, :hostname)}"
+      site: Application.fetch_env!(:docusign, :site)
     ]
     |> Keyword.merge(opts)
     |> Client.new()
