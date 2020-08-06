@@ -34,7 +34,6 @@ defmodule DocuSign.APIClient do
 
   def init(_opts) do
     client = OAuth.client()
-    send(self(), :refresh_token)
     {:ok, client}
   end
 
