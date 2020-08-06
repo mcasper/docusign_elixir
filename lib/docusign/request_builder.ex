@@ -161,10 +161,15 @@ defmodule DocuSign.RequestBuilder do
   def decode(%Tesla.Env{status: status, body: body}, struct) when status in 200..299 do
     options = %{as: struct}
 
-    value =
+    value = if function_exported?(Poison.Decode, :decode, 2) do
+      body
+      |> Poison.Parser.parse!(options)
+      |> Poison.Decode.decode(options)
+    else
       body
       |> Poison.Parser.parse!(options)
       |> Poison.Decode.transform(options)
+    end
 
     {:ok, value}
   rescue
