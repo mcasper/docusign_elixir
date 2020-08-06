@@ -107,7 +107,7 @@ defmodule DocuSign.OAuth do
       "aud" => Application.fetch_env!(:docusign, :hostname),
       "iat" => now_unix,
       "exp" => now_unix + Application.get_env(:docusign, :token_expires_in, 2 * 60 * 60),
-      "scope" => "signature"
+      "scope" => "signature impersonation"
     }
   end
 
