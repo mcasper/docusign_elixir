@@ -149,7 +149,7 @@ defmodule DocuSign.Api.Envelopes do
   {:ok, %DocuSign.Model.EnvelopeSummary{}} on success
   {:error, info} on failure
   """
-  @spec envelopes_post_envelopes(Tesla.Env.client(), String.t(), keyword()) ::
+  @spec envelopes_post_envelopes(DocuSign.Connection.t(), String.t(), keyword()) ::
           {:ok, DocuSign.Model.EnvelopeSummary.t()} | {:error, Tesla.Env.t()}
   def envelopes_post_envelopes(connection, account_id, opts \\ []) do
     optional_params = %{

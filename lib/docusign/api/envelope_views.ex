@@ -162,7 +162,7 @@ defmodule DocuSign.Api.EnvelopeViews do
   {:ok, %DocuSign.Model.EnvelopeViews{}} on success
   {:error, info} on failure
   """
-  @spec views_post_envelope_recipient_view(Tesla.Env.client(), String.t(), String.t(), keyword()) ::
+  @spec views_post_envelope_recipient_view(DocuSign.Connection.t(), String.t(), String.t(), keyword()) ::
           {:ok, DocuSign.Model.EnvelopeViews.t()} | {:error, Tesla.Env.t()}
   def views_post_envelope_recipient_view(connection, account_id, envelope_id, opts \\ []) do
     optional_params = %{
